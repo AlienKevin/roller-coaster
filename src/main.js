@@ -243,6 +243,8 @@ var progress = 0;
 
 var prevTime = performance.now();
 
+var isCameraResetted = false;
+
 function render() {
 
   var time = performance.now();
@@ -268,6 +270,15 @@ function render() {
   velocity = Math.max(maxVelocity, Math.min(0.0002, velocity));
 
   train.lookAt(lookAt.copy(position).sub(tangent));
+  if (progress * totalTime <= t1) {
+    camera.rotation.x = -PI / 2;
+    camera.rotation.z = -PI / 4;
+  } else if (!isCameraResetted) {
+    camera.rotation.x = 0;
+    camera.rotation.y = 0;
+    camera.rotation.z = 0;
+    isCameraResetted = true;
+  }
   renderer.render(scene, camera);
 
   prevTime = time;
