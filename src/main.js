@@ -125,7 +125,7 @@ var curve = (function () {
       }
       else if (t <= t1 + t2 + t3 + t4) {
         t = t - t1 - t2 - t3;
-        var theta = t / t4 * 2 * PI * 3;
+        var theta = t / t4 * 2 * PI * 3 * 4;
         var x = theta;
         x4 = x;
         var y = sin(1 / 4 * theta) * (h4 - h2) + h2;
